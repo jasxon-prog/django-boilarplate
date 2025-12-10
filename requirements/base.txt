@@ -6,3 +6,5 @@ django-jazzmin
 drf-yasg
 djangorestframework
 django-filter
+path
+djangorestframework-simplejwt
