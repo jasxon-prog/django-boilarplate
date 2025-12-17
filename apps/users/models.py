@@ -16,9 +16,6 @@ class PhoneValidator(validators.RegexValidator):
 
 class CustomUserManager(BaseUserManager):
     def _create_user(self, phone_number, password, **extra_fields):
-        """
-        Create and save a user with the given phone and password.
-        """
         if not phone_number:
             raise ValueError("The given phone number must be set")
 
@@ -44,9 +41,6 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(phone_number, password, **extra_fields)
 
 
-
-
-
 class User(AbstractUser):
 
     USERNAME_FIELD = 'phone_number'
@@ -59,8 +53,8 @@ class User(AbstractUser):
     phone_number = models.CharField(
         max_length = 13,
         verbose_name='Phone number',
-        validators = [phone_validator],  
-        unique = True     
+        validators = [phone_validator],
+        unique = True
     )
     birth_date = models.DateField(verbose_name='Birth date', null=True, blank=True)
 
